@@ -1,11 +1,17 @@
-import React from 'react';
+import React from "react";
 import Input from './Input';
 
-const Login = () => <form className="form">
-    <Input type={"text"} pHolder={"Username"} />
-    <Input type={"password"} pHolder={"Password"} />
-    <button type="submit">Login</button>
-</form>
-
+const Login = props => {
+  return (
+    <form className="form">
+      <Input type={"text"} pHolder={"Username"} />
+      <Input type={"password"} pHolder={"Password"} />
+      {props.isRegistered === false &&
+        <Input type={"password"} pHolder={"Confirm Password"} />
+      }
+      <button type="submit">{props.isRegistered === true ? "Login" : "Register"}</button>
+    </form>
+  );
+}
 
 export default Login;
